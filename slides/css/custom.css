@@ -1,0 +1,210 @@
+.reveal .big-font{
+    font-size: 2em;
+}
+
+.logo{
+    position: fixed;
+    bottom: 0;
+    left: 20px;
+    width: 300px;
+    height: 74px;
+
+    background: url("logo.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.reveal .aside-piece{
+    position: absolute;
+    top: -80px;
+    right: -40px;
+    border: none;
+    box-shadow: none;
+}
+
+.reveal .all-the-pieces{
+    position: relative;
+    height: 14em;
+    margin-top: 2em;
+}
+
+.reveal .all-the-pieces .client{
+    position: absolute;
+    top: -0.4em;
+    left: 0;
+}
+
+.reveal .all-the-pieces strong{
+    display: block;
+}
+
+.reveal .all-the-pieces .somepage{
+    position: absolute;
+    top: -0.8em;
+    left: 3em;
+    text-align: center;
+    width: 11em;
+}
+
+.reveal .all-the-pieces .arrow{
+    border-bottom: 1px solid black;
+}
+
+.arrow:before{
+    content: "";
+    display: block;
+    border: 5px solid black;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: rotate(-45deg);
+    -webkit-transform-origin: bottom right;
+}
+
+.arrow-back:after{
+    content: "";
+    display: block;
+    border: 5px solid black;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    -webkit-transform: rotate(45deg);
+    -webkit-transform-origin: bottom left;
+}
+
+.reveal .all-the-pieces .controller{
+    position: absolute;
+    top: -0.7em;
+    left: 14.5em;
+}
+
+.reveal .all-the-pieces .model{
+    position: absolute;
+    top: 6em;
+    left: 19.5em;
+}
+
+.reveal .all-the-pieces .arrow-1{
+    position: absolute;
+    top: 0.2em;
+    left: 17em;
+    padding: 0 2.5em;
+
+    -webkit-transform: rotate(55deg);
+    -webkit-transform-origin: bottom left;
+}
+
+.reveal .all-the-pieces .view{
+    position: absolute;
+    top: 6.5em;
+    left: 13em;
+}
+
+.reveal .all-the-pieces .arrow-2{
+    position: absolute;
+    top: 5.2em;
+    left: 14em;
+    padding: 0 2.5em;
+
+    -webkit-transform: rotate(-65deg);
+    -webkit-transform-origin: bottom left;
+}
+
+.reveal .all-the-pieces .arrow-3{
+    position: absolute;
+    text-align: center;
+    width: 11em;
+    height: 0;
+    left: 3em;
+    top: 1.2em;
+    border-bottom: 1px solid;
+}
+
+.reveal .all-the-pieces .arrow-4{
+    position: absolute;
+    top: -0.4em;
+    left: 19em;
+    width: 2em;
+
+    -webkit-transform: rotate(-45deg);
+    -webkit-transform-origin: bottom left;
+}
+
+.reveal .all-the-pieces .session{
+    position: absolute;
+    top: -2.5em;
+    left: 20.5em;
+}
+
+.reveal .all-the-pieces .arrow-5{
+    position: absolute;
+    top: 0.2em;
+    left: 19.5em;
+    width: 2em;
+}
+
+
+.reveal .all-the-pieces .static-assets{
+    position: absolute;
+    top: -1em;
+    left: 19.5em;
+    width: 10em;
+}
+
+
+.reveal .all-the-pieces .arrow-6{
+    position: absolute;
+    top: 5.5em;
+    left: 22.5em;
+    width: 3.5em;
+    height: 1.2em;
+}
+
+.reveal .all-the-pieces .mongodb-icon{
+    position: absolute;
+    padding-top: 4.2em;
+    background-image: url("../images/mongo-db.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: 4em;
+    left: 26em;
+}
+
+.reveal .all-the-pieces .arrow-7{
+    position: absolute;
+    top: 7em;
+    left: 13em;
+    width: 3.5em;
+
+    -webkit-transform: rotate(-165deg);
+    -webkit-transform-origin: bottom left;
+}
+
+
+.reveal .all-the-pieces .arrow-8{
+    position: absolute;
+    top: 8em;
+    left: 13.5em;
+    width: 3.5em;
+
+    -webkit-transform: rotate(135deg);
+    -webkit-transform-origin: bottom left;
+}
+
+
+.reveal .all-the-pieces .index-ejs{
+    position: absolute;
+    top: 5.5em;
+    left: 5.5em;
+}
+
+
+.reveal .all-the-pieces .others-ejs{
+    position: absolute;
+    top: 10em;
+    left: 10em;
+}

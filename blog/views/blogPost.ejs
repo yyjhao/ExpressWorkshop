@@ -1,0 +1,12 @@
+<% include header %>
+<article>
+    <header>
+        <h2><%= post.title %></h2>
+        <div class='datetime'>
+            <%= new Date(post.date).toDateString() %>
+        </div>
+    </header>
+    <% var body = post.body %>
+    <% include postBody %>
+</article>
+<% include footer %>

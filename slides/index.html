@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Web Development with Express.js</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="logo"></div>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<section class="big-font">
+						<p>
+							Make sure you have installed
+						</p>
+						<ol>
+							<li>Sublime Text 2</li>
+							<li>Google Chrome/Safari</li>
+							<li>Node.js</li>
+							<li>MongoDB</li>
+						</ol>
+						<p>
+							Instruction is available at somewhere
+						</p>
+					</section>
+					<section>
+						<p>
+						<h2>Some things</h2>
+						<ul>
+							<li>Facilitators</li>
+							<li>Getting help / Questions</li>
+						</ul>
+						<h2>Pre-requisites</h2>
+						<ul>
+							<li>HTML/CSS</li>
+							<li>Programming experience</li>
+							<li>Hopefully JavaScript</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h1>Express.js</h1>
+					<ul>
+						<li>The (Modern) Model of the Web</li>
+						<li>JavaScript</li>
+						<li>Node.js</li>
+						<li>Handling URLS</li>
+						<li>ejs</li>
+						<li>MongoDB</li>
+						<li>User Sessions</li>
+					</ul>
+					<p>
+						We'll write a blog today.
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h1>Model of The Web</h1>
+						<h2>Where everything fits in</h2>
+					</section>
+
+					<section data-transition="none">
+						<h2>An oversimplified model</h2>
+						<img src="images/webmodel1.png" />
+					</section>
+
+					<section data-transition="none">
+						<h2>An oversimplified model</h2>
+						<img src="images/webmodel2.png" />
+					</section>
+
+					<section data-transition="none">
+						<h2>Simplified Server-side Model</h2>
+						<img src="images/webmodel3.png" />
+					</section>
+
+					<section data-transition="none">
+						<h2>MVC</h2>
+						<img src="images/webmodel4.png" />
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>JavaScript</h1>
+						<h2>In 10 minutes</h2>
+					</section>
+					<section>
+						<h2>Logging</h2>
+						<pre><code>
+console.log("anything", "any number of thins");
+						</code></pre>
+					</section>
+					<section>
+						<h2>Variables</h2>
+						<pre><code>
+var x = 5;
+var str = "A string";
+var a_bool = true;
+var nothing = null;
+var arr = [1,2,3,4];
+var obj = {
+	property: "An object attribute",
+	numberical_property: 1
+}
+var any_arr = [1, "string", [1,2], {}];
+						</code></pre>
+					</section>
+					<section>
+						<h2>C-like stuff</h2>
+						<pre><code>
+if(correct){
+	doThis();
+}else if(partially_correct){
+	doThese();
+}else{
+	doThat();
+}
+
+switch(a){
+	case 1:
+	console.log("eh");
+	break;
+	default:
+	console.log("er");
+	break;
+}
+
+for(var i = 0; i &lt; 10; i++){
+	console.log(i);
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Functions</h2>
+						<pre><code>
+function a_func(param1, param2){
+	console.log(param1 + param2);
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Functions are variables too!</h2>
+						<pre><code>
+var a_func = function(param){
+	console.log("I am a function!", param);
+}
+var another_same_func = a_func;
+a_func();
+another_same_func();
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Node.js/Express</h1>
+						<h2>JavaScript on the Server-side</h2>
+					</section>
+					<section>
+						<h2>Node.js</h2>
+						<ul>
+							<li>A JavaScript Run-time</li>
+							<li>Favors async style</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Take a look at callbacks</h2>
+						<pre><code>
+function logThreeTimes(msg, callback){
+	for(var i = 0; i &lt; 3; i++){
+		console.log(msg);
+		callback();
+	}
+}
+
+logThreeTimes("my message", function(){
+	console.log("It just logged");
+});
+						</code></pre>
+					</section>
+					<section>
+						<h2>NPM</h2>
+						<h3>Node Package Manager(No Problem Man!)</h3>
+						<p>Installs all required libraries locally to your project directory</p>
+					</section>
+					<section>
+						<h2>Express</h2>
+						<ul>
+							<li>Inspired by Sinatra</li>
+							<li>MVC structure</li>
+							<li>Simplified Route handling</li>
+							<li>Quickly write Web applications</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Let's try it out</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Routes</h1>
+						<h2>Handling URL</h2>
+					</section>
+					<section>
+						<h2>Recap</h2>
+						<p>
+							GET /
+						</p>
+						<pre><code>
+app.get("/", function(req, res){
+	res.send("hello");
+});
+						</code></pre>
+						<p>
+							GET /asfd
+						</p>
+						<pre><code>
+app.get("/asdf", function(req, res){
+	res.send("hello");
+});
+						</code></pre>
+						<p>
+							GET /post/:id
+						</p>
+						<pre><code>
+app.get("/", function(req, res){
+	res.send("hello");
+});
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>ejs</h1>
+						<h2>JavaScript Templates</h2>
+					</section>
+					<section>
+						<h2>Why Templates?</h2>
+						<pre><code>
+"&lt;html&gt;&lt;head&gt;&lt;title&gt;" + post.title + &lt;/title&gt;&lt;/head&gt;&lt;/html&gt;"
+						</code></pre>
+						<p>
+							vs
+						</p>
+						<pre><code>
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt; {{ post.title }} &lt;/title&gt;
+    &lt;/head&gt;
+&lt;/html&gt;
+						</code></pre>
+					</section>
+					<section>
+						<h2>Why Templates</h2>
+						<p>HTML injection</p>
+						<pre><code>
+"&lt;div&gt;" + post.someAttribute + "&lt;/div&gt;"
+						</code></pre>
+						<p>
+							What if
+						</p>
+						<pre><code>
+post.someAttribute = "&lt;/div&gt;&lt;script&gt;doEvil()&lt;/script&gt;"
+						</code></pre>
+					</section>
+					<section>
+						<h2>What is ejs like</h2>
+						<pre><code data-trim contentEditable>
+<% (javascript/ ejs command) %>
+<%= (javascript to string) %>
+// the rest is just html
+
+<% for (var i = 0; i < posts.length; i++){ %>
+	<li><%= posts[i].title %></li>
+<% } %>
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>MongoDB</h1>
+						<h2>Because NOSQL</h2>
+					</section>
+					<section>
+						<h2>MongoDB</h2>
+						<ul>
+							<li>Open-source JSON-style document database</li>
+							<li>Full Index Support</li>
+							<li>All the NoSQL perks</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Document Database</h2>
+						<ul>
+							<li>No Standard Query Language</li>
+							<li>Availability over consistancy</li>
+							<li>Data is stored as JSON-ish objects, not in tables</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Sessions</h1>
+						<h2>Remembering the User</h2>
+					</section>
+					<section>
+						<h2>The web is stateless</h2>
+						<ul>
+							<li>each request does not know of previous requests</lu>
+							<li>independent transactions</li>
+						</ul>
+					</section>
+					<section>
+						<h2>We cheat with cookies</h2>
+						<img class="aside-piece" src='images/cookie-logo.jpg' />
+						<img src="images/cookies.png" />
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Recap</h1>
+						<h2>All the pieces</h2>
+					</section>
+					<section>
+						<h2>All the pieces</h2>
+						<div class='all-the-pieces'>
+							<div class="client fragment">
+								<strong>Client</strong>
+								<small>Browser</small>
+							</div>
+							<div class="somepage arrow fragment">
+								'/somepage'
+							</div>
+							<div class="controller fragment">
+								<strong>Controller</strong>
+								<small>Express Routes</small>
+							</div>
+							<div class="arrow-1 arrow arrow-back fragment">
+								1
+							</div>
+							<div class="model fragment">
+								<strong>Model</strong>
+								<small>MongoDB</small>
+							</div>
+							<div class="arrow-2 arrow arrow-back fragment">
+								2
+							</div>
+							<div class="view fragment">
+								<strong>View</strong>
+								<small>ejs</small>
+							</div>
+							<div class="arrow-3 arrow-back fragment">
+								HTML
+							</div>
+						</div>
+					</section>
+					<section data-transition="fade">
+						<h2>All the pieces</h2>
+						<div class='all-the-pieces'>
+							<div class="client">
+								<strong>Client</strong>
+								<small>Browser</small>
+							</div>
+							<div class="somepage arrow">
+								GET, POST, DEL, PUT
+							</div>
+							<div class="controller">
+								<strong>Controller</strong>
+								<small>Express Routes</small>
+							</div>
+							<div class="arrow-1 arrow arrow-back">
+								1
+							</div>
+							<div class="model">
+								<strong>Model</strong>
+								<small>Mongoose</small>
+							</div>
+							<div class="arrow-2 arrow arrow-back">
+								2
+							</div>
+							<div class="view">
+								<strong>View</strong>
+								<small>ejs</small>
+							</div>
+							<div class="arrow-3 arrow-back">
+								HTML
+							</div>
+							<div class="arrow-4 arrow fragment"></div>
+							<div class="session fragment">
+								<strong>Sessions</strong>
+							</div>
+							<div class="arrow-5 arrow fragment"></div>
+							<div class="static-assets fragment">
+								<strong>Static Assets</strong>
+								<small>CSS, JS, images</small>
+							</div>
+							<div class="arrow-6 arrow arrow-back fragment">
+								db driver
+							</div>
+							<div class="mongodb-icon fragment">
+								<strong>MongoDB</strong>
+							</div>
+							<div class="arrow-7 arrow fragment"></div>
+							<div class="index-ejs fragment">
+								index.ejs
+							</div>
+							<div class="arrow-8 arrow fragment"></div>
+							<div class="others-ejs fragment">
+								...
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<h2>A few more things...</h2>
+					<ul>
+						<li>stuff</li>
+					</ul>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: "Beige", // available themes are in /css/theme
+				transition: "linear", // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
