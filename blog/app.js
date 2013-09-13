@@ -29,13 +29,13 @@ app.get("/post/:id", function(req, res){
         id = new ObjectId(req.params.id);
     }catch(e){
         res.status(404);
-        res.render("404.ejs", {title: "404"});
+        res.render("404.ejs");
         return;
     }
     BlogPost.find({_id: id}).exec(function(err, data){
         if(err || data.length === 0){
             res.status(404);
-            res.render("404.ejs", {title: "404"});
+            res.render("404.ejs");
         }else{
             res.render("blogPost.ejs", { title: data[0].title, post: data[0] });
         }

@@ -2,6 +2,11 @@
     font-size: 2em;
 }
 
+.reveal code{
+    font-size: 1.5em;
+    line-height: 1.3em;
+}
+
 .logo{
     position: fixed;
     bottom: 0;
@@ -26,6 +31,7 @@
     position: relative;
     height: 14em;
     margin-top: 2em;
+    margin-left: -1em;
 }
 
 .reveal .all-the-pieces .client{
