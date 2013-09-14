@@ -1,0 +1,16 @@
+<% include header.ejs %>
+        <ul>
+            <% for (var i = 0; i < posts.length; i++){ %>
+                <li>
+                    <div class="title">
+                        <a href="<%= "/post/" + posts[i]._id %>">
+                            <%= posts[i].title %>
+                        </a>
+                    </div>
+                    <div class="body">
+                        <%= posts[i].body %>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+<% include footer.ejs %>
