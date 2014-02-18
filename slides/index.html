@@ -36,7 +36,7 @@
                         </p>
                         <ol>
                             <li><a href="http://www.sublimetext.com/3">Sublime Text 3</a>/<a href="http://www.sublimetext.com/2">2</a></li>
-                            <li><a href="https://www.google.com/intl/en/chrome/browser/">Google Chrome</a>/Safari</li>
+                            <li><a href="https://www.google.com/intl/en/chrome/browser/">Google Chrome</a></li>
                             <li><a href="http://nodejs.org/download/">Node.js</a></li>
                             <li><a href="http://www.mongodb.org/downloads">MongoDB</a></li>
                         </ol>
@@ -81,22 +81,22 @@
                         <h2>Where everything fits in</h2>
                     </section>
 
-                    <section data-transition="none">
+                    <section>
                         <h2>An oversimplified model</h2>
                         <img src="images/webmodel1.png" />
                     </section>
 
-                    <section data-transition="none">
+                    <section>
                         <h2>An oversimplified model</h2>
                         <img src="images/webmodel2.png" />
                     </section>
 
-                    <section data-transition="none">
+                    <section>
                         <h2>Simplified Server-side Model</h2>
                         <img src="images/webmodel3.png" />
                     </section>
 
-                    <section data-transition="none">
+                    <section>
                         <h2>MVC</h2>
                         <img src="images/webmodel4.png" />
                     </section>
@@ -205,6 +205,18 @@ logThreeTimes("my message", function(){
                         </code></pre>
                     </section>
                     <section>
+                        <h2>Async vs sync</h2>
+                        <pre><code>
+// sync
+content = readFile()
+doStuffWith(content)
+// async
+readFile(function(content){
+    doStuffWith(content);
+});
+                        </code></pre>
+                    </section>
+                    <section>
                         <h2>Express</h2>
                         <ul>
                             <li>Inspired by Sinatra</li>
@@ -269,10 +281,10 @@ app.get("/post/:id", function(req, res){
                         <pre><code>
 &lt;html&gt;
     &lt;head&gt;
-        &lt;title&gt; {{ post.title }} &lt;/title&gt;
+        &lt;title&gt; &lt;%= post.title %&gt; &lt;/title&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        &lt;article&gt; {{ post.content }} &lt;/article&gt;
+        &lt;article&gt; &lt;%= post.content %&gt; &lt;/article&gt;
     &lt;/body&gt;
 &lt;/html&gt;
                         </code></pre>
@@ -288,7 +300,7 @@ app.get("/post/:id", function(req, res){
                         <pre><code>
 &lt;html&gt;
     &lt;head&gt;
-        &lt;title&gt; {{ post.title }} &lt;/title&gt;
+        &lt;title&gt; &lt;%= post.title %&gt; &lt;/title&gt;
     &lt;/head&gt;
 &lt;/html&gt;
                         </code></pre>

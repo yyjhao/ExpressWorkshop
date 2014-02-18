@@ -111,6 +111,7 @@
 * So here's the idea of async
 * by using callbacks, we pass a task as a function to the program
 * and the function will be called at the correct time
+* and meanwhile, the program can handle other things
 
 * OK, so next is express
 * it's a a framework inspired by sinatra, just some other framework from ruby
@@ -259,6 +260,7 @@ console.log("listening");
 //app.configure(function(){
 //    app.use(app.router);
     app.set('views', __dirname + '/views');
+    // __dirname returns the current directory of the app
     app.engine('html', ejs.renderFile);
 //});
 

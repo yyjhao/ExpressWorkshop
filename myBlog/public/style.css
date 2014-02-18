@@ -1,23 +1,40 @@
 body{
-    background: lightblue;
+    background: #ededed;
     font-family: sans-serif;
-    -webkit-transition-duration: 0.2s;
+    text-shadow: 0 1px 1px white;
+    color: #333;
 }
 
-body:hover, body.crazy{
-    background: green;
+body>header{
+    text-align: center;
 }
+
+body>header>h1{
+    font-size: 8em;
+    margin-bottom: 0;
+}
+
 
 ul{
     list-style: none;
 }
 
+body>footer {
+    margin: 1em;
+    text-align: center;
+}
+
 a:link, a:visited{
-    color: green;
+    color: darkgreen;
     text-decoration: none;
     -webkit-transition-duration: 0.2s;
 }
 
 a:hover{
     color: blue;
+}
+
+
+body h1 a:link, body h1 a:visited{
+    color: #333 
 }
