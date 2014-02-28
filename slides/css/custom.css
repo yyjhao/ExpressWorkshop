@@ -1,3 +1,11 @@
+.info {
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: "Helvetica Neue";
+    color: #333;
+    padding: 1em;
+    position: fixed;
+}
 .reveal .big-font{
     font-size: 2em;
 }

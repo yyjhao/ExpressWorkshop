@@ -373,6 +373,12 @@ app.get("/", function(request, response){
 * realise that header and footer the same
 * use include, copy paste
 
+* add copy right footer
+
+```html
+<footer> Copyright &copy; 2014 Me! </footer>
+```
+
 * again, let's setup our app.js for the blog page
 
 ```javascript
@@ -389,6 +395,12 @@ app.get("/posts/:id", function(req, res){
 
 * just very simple data
 * run
+
+* add copy right footer
+
+```html
+
+```
 
 # MongoDB
 
@@ -408,6 +420,9 @@ app.get("/posts/:id", function(req, res){
 
 * but today we are going to use something on top of mongo
 * Mongoose, blah
+
+* Make a directory called test 
+* **set up** `bin/mongod --dbpath ../test`
 
 * create a file blogPost.js
 
@@ -464,13 +479,14 @@ app.get("/post/:id", function(req, res){
         id = new ObjectId(req.params.id);
     }catch(e){
         res.status(404);
-        res.render("404.ejs");
+        res.render("404.ejs", { title: req.params.id + " not found" });
         return;
     }
     BlogPost.find({_id: id}).exec(function(err, data){
+    // _id is what we use to reference a unique element in mongodb
         if(err || data.length === 0){
             res.status(404);
-            res.render("404.ejs");
+            res.render("404.ejs", { title: req.params.id + " not found" });
         }else{
             res.render("blogPost.ejs", { title: data[0].title, post: data[0] });
         }
@@ -481,7 +497,6 @@ app.get("/post/:id", function(req, res){
 * setup 404.ejs
 
 ```html
-<% var title = "404" %>
 <% include header %>
 404
 <% include footer %>
@@ -492,17 +507,18 @@ app.get("/post/:id", function(req, res){
 * let's setup a blogForm.ejs
 
 ```html
-<% var title = "New Post" %>
 <% include header %>
 <form method="post">
+// post means that we are sending data to the server and the server may update
+// its data based on the request
     <ul>
         <li>
-            <label for="username">User name </label>
-            <input type="text" name="username" id="username" />
+            <label for="entryTitle">Title: </label>
+            <input id="entryTitle" name="entryTitle" />
         </li>
         <li>
-            <label for="password">Password </label>
-            <input type="password" name="password" id="password" />
+            <label for="entryBody">Body: </label>
+            <textarea id="entryBody" name="entryBody"></textarea>
         </li>
     </ul>
     <input type="submit" />
@@ -522,19 +538,36 @@ app.get("/post", function(req, res){
 * to really make use of the form
 
 ```javascript
+// sequence matters, because middleware
 app.use(express.bodyParser());
-app.post("/post", function(req, res){
+app.use(app.router);
+app.post('/post', function(req, res) {
     BlogPost.create({
-        title: req.body.title,
-        body: BlogPost.processBody(req.body.body)
-    }, function(err, data){
-        if(err){
-
-        }else{
-            res.redirect("/post/" + data._id);
+        title: req.body.entryTitle,
+        body: req.body.entryBody
+    }, function(err, data) {
+        if (!err) {
+            res.redirect('/post/' + data._id);
         }
     });
 });
+```
+
+* enhance
+
+```html
+// index
+<div class="title">
+    <a href="<%= '/post/' + posts[i]._id %>">
+    <%= posts[i].title %>
+    </a>
+</div>
+
+// header
+<header>
+    <h1><a href="/">My Blog</a></h1>
+    <a href="/post">new entry</a>
+</header>
 ```
 
 * Congrats, now you have a functioning blog! Although it's really ugly and insecure!
@@ -571,13 +604,13 @@ app.get("/login", function(req, res){
     res.render('loginForm.ejs', { title: "My Blog | Login" });
 });
 
-app.post("/login", function(req, res){
-    if(req.body.password === "whosyourdaddy"){
+app.post('/login', function(req, res) {
+    if (req.body.password === 'whosyourdaddy') {
         req.session.loggedIn = true;
-        res.redirect("/");
-    }else{
+        res.redirect('/post');
+    } else {
         req.session.loggedIn = false;
-        res.redirect("/post");
+        res.redirect('/login');
     }
 });
 ```
@@ -607,3 +640,9 @@ app.post("/login", function(req, res){
 ```javascript
 app.use(express.static('public'));
 ```
+
+# todo
+
+1. Files
+    1. Complete project
+    1. node_modules
