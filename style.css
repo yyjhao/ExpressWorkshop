@@ -1,0 +1,55 @@
+body{
+    background: #ededed;
+    font-family: sans-serif;
+    text-shadow: 0 1px 1px white;
+    color: #333;
+}
+
+body>header{
+    text-align: center;
+}
+
+body>header>h1{
+    font-size: 8em;
+    margin-bottom: 0;
+}
+
+body>article, body>ul, body>form {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.body{
+    padding: 1em;
+    color: #666;
+}
+
+.title{
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+
+ul{
+    list-style: none;
+}
+
+body>footer {
+    margin: 1em;
+    text-align: center;
+}
+
+a:link, a:visited{
+    color: darkgreen;
+    text-decoration: none;
+    -webkit-transition-duration: 0.2s;
+}
+
+a:hover{
+    color: blue;
+}
+
+
+body h1 a:link, body h1 a:visited{
+    color: #333 
+}
