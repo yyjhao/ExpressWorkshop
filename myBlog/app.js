@@ -1,19 +1,24 @@
 var config = require("./config"),
     ejs = require("ejs"),
     BlogPost = require("./blogPost")(config.db),
-    express = require("express");
+    express = require("express"),
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+    expressSession = require('express-session');
 
 var app = express();
 
-app.configure(function(){
-    app.use(express.bodyParser());
-    app.use(express.cookieParser());
-    app.use(express.session({secret: "my_secret"}));
-    app.use(express.static("public"));
-    app.use(app.router);
-    app.set("views", __dirname + "/views");
-    app.engine("html", ejs.renderFile);
-});
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(expressSession({
+    secret: "my_secret",
+    resave: true,
+    saveUninitialized: false
+}));
+app.use(express.static("public"));
+app.set("views", __dirname + "/views");
+app.engine("html", ejs.renderFile);
 
 app.get("/", function(request, response){
     BlogPost.find().sort({date: -1}).exec(function(err, data){
