@@ -1,0 +1,244 @@
+body {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: #555555;
+  margin: 0 auto;
+  position: relative;
+  max-width: 2400px;
+}
+
+body > footer {
+  text-align: center;
+  padding: 20px;
+}
+
+article {
+  font-size: 1.2em;
+  line-height: 1.4;
+  font-family: Georgia, serif;
+}
+
+article .body {
+    text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  color: #333333;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+
+h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em;
+}
+
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.5em;
+}
+
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+h1 img, h2 img, h3 img,
+h4 img, h5 img, h6 img {
+  margin: 0;
+}
+
+li ul,
+li ol {
+  margin: 0;
+}
+
+ul, ol {
+  margin: 0 1.5em 1.5em 0;
+  padding-left: 1.5em;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+dl {
+  margin: 0 0 1.5em 0;
+}
+
+dl dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 1.5em;
+}
+
+img {
+  margin: 5px;
+}
+
+a:link {
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  color: #002D82;
+  text-decoration: none;
+}
+a:link:hover {
+    color: #0050e8;
+    text-decoration: underline;
+}
+a:visited {
+  color: #002D82;
+  text-decoration: none;
+}
+a:visited:hover {
+    color: #0050e8;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+textarea, input[type="text"], input[type="password"] {
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+  display: inline-block;
+  width: 200px;
+  vertical-align: middle;
+}
+
+label {
+    padding: 10px;
+    width: 100px;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+button, input[type="submit"] {
+    box-shadow:inset 0px -3px 7px 0px #29bbff;
+    background-color:#2dabf9;
+    border-radius:3px;
+    border: none;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:arial;
+    font-size:15px;
+    padding:9px 23px;
+    text-decoration:none;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color:#0688fa;
+}
+
+.main-header :link, .main-header :visited{
+    color: #444;
+}
+
+.main-wrap {
+  max-width: 850px;
+  margin: 0 auto;
+  padding-top: 4em;
+  margin-top: -50px;
+  padding-bottom: 100px;
+  margin-bottom: -100px;
+  position: relative;
+}
+  .main-wrap .half {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 2em;
+}
+  .main-wrap.large, .main-wrap.double-column {
+    max-width: 1100px;
+}
+  .main-wrap.double-column .main {
+    float: left;
+    width: 80%;
+    margin: 0;
+    box-sizing: border-box;
+}
+  .main-wrap.double-column aside {
+    float: left;
+    margin: 0;
+}
+  .main-wrap.double-column:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.posts {
+  font-family: Georgia, serif;
+}
+  .posts > li {
+    margin-bottom: 1.5em;
+    position: relative;
+    vertical-align: top;
+}
+    .posts > li > a {
+      color: #555555;
+      letter-spacing: normal;
+      word-spacing: normal;
+      padding: 10px;
+  }
+      .posts > li > a:hover {
+        text-decoration: none;
+        color: #555555;
+    }
+        .posts > li > a:hover .block-link-target {
+          color: #777777;
+          text-decoration: underline;
+      }
+      .posts > li > a > h2 {
+        display: inline-block;
+        margin-bottom: 0;
+        padding-left: 0;
+        position: relative;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+  .posts .block-link {
+    padding-left: 10px;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .main-wrap {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+}
