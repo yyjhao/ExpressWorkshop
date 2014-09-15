@@ -1,15 +1,17 @@
 <% include header.ejs %>
-        <ul>
+        <ul class='posts'>
             <% for (var i = 0; i < posts.length; i++){ %>
                 <li>
-                    <div class="title">
-                        <a href="<%= "/post/" + posts[i]._id %>">
-                            <%= posts[i].title %>
-                        </a>
-                    </div>
-                    <div class="body">
-                        <%= posts[i].body %>
-                    </div>
+                    <article>
+                        <div class="title">
+                            <a href="<%= "/post/" + posts[i]._id %>">
+                                <%= posts[i].title %>
+                            </a>
+                        </div>
+                        <div class="body">
+                            <%= posts[i].body %>
+                        </div>
+                    </article>
                 </li>
             <% } %>
         </ul>
