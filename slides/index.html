@@ -9,7 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="css/reveal.min.css">
-        <link rel="stylesheet" href="css/custom.css">
         <link rel="stylesheet" href="css/theme/default.css" id="theme">
 
         <!-- For syntax highlighting -->
@@ -18,6 +17,7 @@
         <!--[if lt IE 9]>
         <script src="lib/js/html5shiv.js"></script>
         <![endif]-->
+        <link rel="stylesheet" href="css/custom.css">
     </head>
 
     <body>
@@ -45,6 +45,11 @@
                             <li><a href="http://nodejs.org/download/">Node.js</a></li>
                             <li><a href="http://www.mongodb.org/downloads">MongoDB</a></li>
                         </ol>
+                        <ul class='inline-list'>
+                            <li><a href="asdf">Package for Windows</a></li>
+                            <li><a href="asdf">Package for Mac</a></li>
+                            <li><a href="asdf">Package for Linux</a></li>
+                        </ul>
                     </section>
                     <section>
                         <p>
@@ -69,14 +74,14 @@
                         We'll write a blog today.
                     </p>
                     <ul>
-                        <li>The (Modern) Model of the Web</li>
-                        <li>JavaScript</li>
-                        <li>Node.js</li>
-                        <li>Handling URLS</li>
-                        <li>ejs</li>
-                        <li>MongoDB</li>
-                        <li>User Sessions</li>
-                        <li>Static Assets</li>
+                        <li class="fragment">The (Modern) Model of the Web</li>
+                        <li class="fragment">JavaScript</li>
+                        <li class="fragment">Node.js</li>
+                        <li class="fragment">Handling URLS</li>
+                        <li class="fragment">ejs</li>
+                        <li class="fragment">MongoDB</li>
+                        <li class="fragment">User Sessions</li>
+                        <li class="fragment">Static Assets</li>
                     </ul>
                 </section>
 
@@ -216,7 +221,7 @@ logThreeTimes("my message", function(){
 content = readFile(file1)
 doStuffWith(content)
 // async
-readFile(function(content){
+readFile(file1, function(content){
     doStuffWith(content);
 });
                         </code></pre>
@@ -226,8 +231,8 @@ readFile(function(content){
                         <ul>
                             <li>Inspired by Sinatra</li>
                             <li>MVC structure</li>
-                            <li>Simplified Route handling</li>
-                            <li>Quickly write Web applications</li>
+                            <li>Simplified route handling</li>
+                            <li>Quickly write web applications</li>
                         </ul>
                     </section>
                     <section>
@@ -501,6 +506,9 @@ post.someAttribute = "&lt;/div&gt;&lt;script&gt;doEvil()&lt;/script&gt;"
                         <li class="fragment">Ajax</li>
                         <li class="fragment">Strategies</li>
                         <li class="fragment">Markdown</li>
+                        <li class="fragment"><a href="http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/">
+                            Isomorphic JavaScript
+                        </a></li>
                     </ul>
                 </section>
             </div>

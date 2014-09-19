@@ -181,10 +181,6 @@ var config = require("./config.json"),
 
 var app = express();
 
-app.configure(function(){
-    app.use(app.router);
-});
-
 app.get("/", function(request, response){
     response.send("Greetings world!");
 });
@@ -257,12 +253,9 @@ console.log("listening");
 
 //var app = express();
 
-//app.configure(function(){
-//    app.use(app.router);
-    app.set('views', __dirname + '/views');
-    // __dirname returns the current directory of the app
-    app.engine('html', ejs.renderFile);
-//});
+app.set('views', __dirname + '/views');
+// __dirname returns the current directory of the app
+app.engine('html', ejs.renderFile);
 
 //app.get("/", function(request, response){
     response.render("index.ejs", {title: "My blog", content: "Greetings visitor!"});
@@ -539,8 +532,9 @@ app.get("/post", function(req, res){
 
 ```javascript
 // sequence matters, because middleware
-app.use(express.bodyParser());
-app.use(app.router);
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.post('/post', function(req, res) {
     BlogPost.create({
         title: req.body.entryTitle,
@@ -582,8 +576,14 @@ app.post('/post', function(req, res) {
 * setup config
 
 ```javascript
-app.use(express.cookieParser());
-app.use(express.session({secret: config.secret}));
+var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
+app.use(cookieParser());
+app.use(expressSession({
+    secret: config.secret,
+    resave: true,
+    saveUninitialized: false
+}));
 ```
 
 ```javascript
