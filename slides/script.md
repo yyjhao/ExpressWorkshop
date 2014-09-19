@@ -531,7 +531,6 @@ app.get("/post", function(req, res){
 * to really make use of the form
 
 ```javascript
-// sequence matters, because middleware
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

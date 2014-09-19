@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressSession({
-    secret: "my_secret",
+    secret: config.secret,
     resave: true,
     saveUninitialized: false
 }));
@@ -88,4 +88,4 @@ app.post("/newEntry", function(req, res){
 });
 
 app.listen(config.port);
-console.log("Listening");
+console.log("Listening on port", config.port);
