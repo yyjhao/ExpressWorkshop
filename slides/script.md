@@ -128,14 +128,7 @@
 * we will first set up our application
 * now for windows users, run the node command line, for mac users fire up your terminal
 
-* go to a suitable place, for eg your desktop
-```
-mkdir blog
-cd blog
-```
-* open your folder with sublimetext as well
-
-* create a file call package.json, this will be the file that npm reads
+* `npm init`
 
 ```json
 //package.json
@@ -154,6 +147,8 @@ cd blog
 * I will explain what each library does later
 * run npm install in the folder
 * break to resolve issues
+
+* how to install new packages?
 
 # after break
 
@@ -639,9 +634,3 @@ app.post('/login', function(req, res) {
 ```javascript
 app.use(express.static('public'));
 ```
-
-# todo
-
-1. Files
-    1. Complete project
-    1. node_modules
