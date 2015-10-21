@@ -1,17 +1,18 @@
-var config = require("./config"),
-    ejs = require("ejs"),
-    BlogPost = require("./blogPost")(config.db),
-    express = require("express"),
-    bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser'),
-    expressSession = require('express-session');
+var config = require("./config");
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var ejs = require("ejs");
+var BlogPost = require("./blogPost")(config.db);
+var express = require("express");
 
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(cookieParser());
-app.use(expressSession({
+app.use(session({
     secret: config.secret,
     resave: true,
     saveUninitialized: false
@@ -47,7 +48,7 @@ var ObjectId = require("mongoose").Types.ObjectId;
 app.get("/post/:id", function(req, res){
     var id;
     try{
-        id = new ObjectId(req.param("id"));
+        id = new ObjectId(req.params.id);
     }catch(e){
         res.status(404);
         res.send("404 Page Not Found.");

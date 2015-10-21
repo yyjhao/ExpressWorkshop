@@ -6,6 +6,11 @@ body {
   max-width: 2400px;
 }
 
+.main-header {
+  border-bottom: 4px solid;
+  margin-bottom: 2em;
+}
+
 body > footer {
   text-align: center;
   padding: 20px;
@@ -202,6 +207,11 @@ button:hover, input[type="submit"]:hover {
 
 .posts {
   font-family: Georgia, serif;
+}
+
+.posts .body {
+  font-size: 0.8em;
+  color: #555;
 }
   .posts > li {
     margin-bottom: 1.5em;

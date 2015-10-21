@@ -11,7 +11,7 @@
 
 # Intro
 
-* So this workshop is about express, a node.js framework
+* This workshop is about express, a node.js framework
 * And we will build a blog today with it
 * Things I will cover are
     * the model of the web
@@ -114,7 +114,7 @@
 * and meanwhile, the program can handle other things
 
 * OK, so next is express
-* it's a a framework inspired by sinatra, just some other framework from ruby
+* It's a framework in nodejs which is really easy to get start with.
 * It uses the MVC structure we talked about just now ...
 
 * last thing before we start
@@ -137,19 +137,17 @@
     "description": "My blog",
     "version": "0.0.1",
     "dependencies": {
-        "express": "3.x",
-        "ejs": "0.8.x",
-        "mongoose": "3.x"
+        "express": "^4.0.0",
+        "mongoose": "^4.1.12"
     }
 }
 ```
 
-* I will explain what each library does later
-* run npm install in the folder
-* break to resolve issues
+run command
 
 * how to install new packages?
 
+break to resolve issues
 # after break
 
 * create a file called config.json
@@ -171,15 +169,14 @@
 ```javascript
 // app.js
 // explain require
-var config = require("./config.json"),
-    express = require("express");
+var config = require("./config.json");
+var express = require("express");
 
 var app = express();
 
 app.get("/", function(request, response){
     response.send("Greetings world!");
 });
-
 
 // later
 app.get("/login", function(req, res){
@@ -192,7 +189,7 @@ app.get("/post/:id", function(req, res){
 });
 
 app.listen(config.port);
-console.log("listening");
+console.log("listening on port", config.port);
 ```
 
 # Routing
@@ -239,12 +236,17 @@ console.log("listening");
 * just for loop, then in each loop we generate an li tag that contains the title
 
 # hands on
+
+```bash
+$ npm install --save ejs
+```
+
 * go back to our app.js
 
 ```javascript
-//var config = require("./config"),
-//    express = require("express"),
-    ejs = require('ejs');
+//var config = require("./config");
+//var express = require("express");
+var ejs = require('ejs');
 
 //var app = express();
 
@@ -266,7 +268,7 @@ app.engine('html', ejs.renderFile);
 
 * as we promise in the code
 * create a folder called 'views'
-* then create a file called index.ejs in it
+* then edit a file called index.ejs in it
 
 ```html
 <html>
@@ -335,7 +337,7 @@ app.get("/", function(request, response){
 * run
 
 * let's also make the page for blog post
-* create a new file blog post
+* Edit blogPost.ejs
 
 ```html
 <html>
@@ -361,10 +363,14 @@ app.get("/", function(request, response){
 * realise that header and footer the same
 * use include, copy paste
 
+```
+<% include header.ejs %>
+```
+
 * add copy right footer
 
 ```html
-<footer> Copyright &copy; 2014 Me! </footer>
+<footer> Copyright &copy; 2015 Me! </footer>
 ```
 
 * again, let's setup our app.js for the blog page
@@ -384,10 +390,10 @@ app.get("/posts/:id", function(req, res){
 * just very simple data
 * run
 
-* add copy right footer
+# Static assets
 
-```html
-
+```javascript
+app.use(express.static('public'));
 ```
 
 # MongoDB
@@ -449,7 +455,7 @@ module.exports = function(db){
 * now let's update our app.js
 
 ```javascript
-BlogPost = require("./blogPost")(config.db);
+var BlogPost = require("./blogPost")(config.db);
 
 //later
 // explain mongo id is not string
@@ -466,8 +472,9 @@ app.get("/post/:id", function(req, res){
     try{
         id = new ObjectId(req.params.id);
     }catch(e){
-        res.status(404);
-        res.render("404.ejs", { title: req.params.id + " not found" });
+        res.sendStatus(404);
+        // res.status(404);
+        // res.render("404.ejs", { title: req.params.id + " not found" });
         return;
     }
     BlogPost.find({_id: id}).exec(function(err, data){
@@ -482,17 +489,9 @@ app.get("/post/:id", function(req, res){
 });
 ```
 
-* setup 404.ejs
-
-```html
-<% include header %>
-404
-<% include footer %>
-```
-
 * But we also want the user to update blogs
 * first the front end
-* let's setup a blogForm.ejs
+* let's edit blogForm.ejs
 
 ```html
 <% include header %>
@@ -524,6 +523,11 @@ app.get("/post", function(req, res){
 ```
 
 * to really make use of the form
+```bash
+$ npm install --save body-parser
+```
+
+* add names to forms
 
 ```javascript
 var bodyParser = require('body-parser');
@@ -569,11 +573,17 @@ app.post('/post', function(req, res) {
 
 * setup config
 
+```bash
+$ npm install --save cookie-parser
+$ npm install --save express-session
+```
+
 ```javascript
 var cookieParser = require('cookie-parser');
-var expressSession = require('express-session');
+var session = require('express-session');
+
 app.use(cookieParser());
-app.use(expressSession({
+app.use(session({
     secret: config.secret,
     resave: true,
     saveUninitialized: false
@@ -629,8 +639,3 @@ app.post('/login', function(req, res) {
 
 * run
 
-# Static assets
-
-```javascript
-app.use(express.static('public'));
-```
