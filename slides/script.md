@@ -174,13 +174,15 @@ var express = require("express");
 
 var app = express();
 
+// http get method, there are also other methods
+// get is when you want to just get a page.
 app.get("/", function(request, response){
     response.send("Greetings world!");
 });
 
 // later
 app.get("/login", function(req, res){
-    response.send("This is not the login page.");
+    response.send("<h1>This is not the login page.</h1>");
 })
 
 // later later
